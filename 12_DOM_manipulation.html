@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practice</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: #ffff;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="language" id="ul">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+    let div = document.createElement('div')
+    console.log(div)
+
+
+    div.className = "divclass"
+    div.id = "divId"
+    div.style.backgroundColor = "green"
+    div.style.color = "blue"
+    div.style.width = "100px"
+    div.style.textAlign = "center"
+
+    let divbox = document.createTextNode('div')
+    div.appendChild(divbox)
+    document.body.appendChild(div)
+
+    let box = document.createElement('div')
+    console.log(box)
+
+
+    box.className = "divclass"
+    box.id = "divId"
+    box.style.backgroundColor = "yellow"
+    box.style.color = "red"
+    box.style.width = "100px"
+    box.style.textAlign = "center"
+    box.appendChild(document.createTextNode("keshav"))
+    document.body.appendChild(box)
+
+
+
+    function addlang(langname) {
+        let li = document.createElement('li')
+
+        li.appendChild(document.createTextNode(langname))
+        document.querySelector(".language").appendChild(li)
+    }
+
+    addlang('python')
+    addlang('java')
+</script>
+
+</html>

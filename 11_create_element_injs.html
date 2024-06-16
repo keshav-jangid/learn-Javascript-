@@ -27,15 +27,23 @@
     div.style.padding = "12px"
     div.style.color = "white"
 
-    div.innerHTML = "Javascript with Keshav"
-    document.body.appendChild(div)
 
-
-    const addtext = document.createTextNode("keshav jangid")
-    div.appendChild(addtext)
+    const addtext = document.createTextNode("learn javascript")
     document.body.appendChild(addtext)
 
+const box = document.createElement('div')
 
+console.log(box)
+
+box.id ="box1"
+box.setAttribute("className", "box")
+box.style.backgroundColor = "red"
+box.style.color ="black"
+
+
+ const boxdiv = box.appendChild(document.createTextNode("learn and fun with Javascript"))
+
+documnet.body.appendChild(boxdiv)
 </script>
 
 </html>
