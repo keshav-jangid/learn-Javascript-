@@ -20,6 +20,9 @@
     </ul>
 </body>
 <script>
+
+    // Method One
+
     let div = document.createElement('div')
     console.log(div)
 
@@ -38,6 +41,9 @@
     let box = document.createElement('div')
     console.log(box)
 
+
+
+    // Method  Two 
 
     box.className = "divclass"
     box.id = "divId"
@@ -59,6 +65,26 @@
 
     addlang('python')
     addlang('java')
+
+
+
+
+
+    // edit 
+
+    const firstlist = document.querySelector('li:nth-child(1)')
+
+    console.log(firstlist)
+    // firstlist.innerHTML ="native"
+    const newli = document.createElement('li')
+    newli.textContent = "react"
+    firstlist.replaceWith(newli)
+
+
+    // Remove 
+
+    const remove = document.querySelector('li:last-child')
+    // remove.remove()
 </script>
 
 </html>
