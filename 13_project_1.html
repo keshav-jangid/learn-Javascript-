@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>color-cahnger</title>
     <style>
-        .button{
+        .button {
             border: 2px solid black;
             display: inline-block;
+            align-items: center;
+            justify-content: center;
             width: 100px;
             height: 100px;
             margin: 4px;
@@ -15,66 +18,77 @@
             padding: 10px;
 
         }
-        #green{
+
+        #green {
             background-color: green;
         }
-        #blue{
-            background-color: blue;
+
+        #white {
+            background-color: white;
         }
-        #yellow{
+
+        #yellow {
             background-color: yellow;
         }
-        #grey{
+
+        #grey {
             background-color: grey;
         }
-        
+
+        .message {
+            font-size: xx-large;
+            height: 200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="navdiv" id="navdiv1">Home</div>
-        <div class="navdiv" id="navdiv2">About</div>
-        <div class="navdiv" id="navdiv3">Refresh</div>
 
-    </nav>
+<body>
+
     <div class="container" id="container1">
 
         <h1 class="heading">
             color changer project 1
         </h1>
+        <span class="button" id="white">white</span>
         <span class="button" id="grey">grey</span>
         <span class="button" id="green">green</span>
-        <span class="button" id="blue">blue</span>
         <span class="button" id="yellow">yellow</span>
+    </div>
+    <div class="message">
+        click on any box to change the color of background
     </div>
 </body>
 <script>
     const buttons = document.querySelectorAll('.button')
-   // console.log(buttons)
+    // console.log(buttons)
     const body = document.querySelector('body')
     //console.log(body)
 
-    buttons.forEach(function(button){
+    buttons.forEach(function (button) {
         console.log(button);
-        button.addEventListener('click', function(e){
+        button.addEventListener('click', function (e) {
             console.log(e)
 
 
-            switch(e.target.id){
+            switch (e.target.id) {
                 case "grey":
-                body.style.backgroundColor = e.target.id
-                break
+                    body.style.backgroundColor = e.target.id
+                    break
                 case "green":
-                body.style.backgroundColor = e.target.id
-                break
-                case "blue":
-                body.style.backgroundColor = e.target.id
-                break
+                    body.style.backgroundColor = e.target.id
+                    break
+                case "white":
+                    body.style.backgroundColor = e.target.id
+                    break
                 case "yellow":
-                body.style.backgroundColor = e.target.id
-                break
+                    body.style.backgroundColor = e.target.id
+                    break
             }
-            
+
         })
     })
 
@@ -84,4 +98,5 @@
 
 
 </script>
+
 </html>

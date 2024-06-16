@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 10px;
+            background-color: rgb(178, 205, 245);
+        }
+
+        .container {
+            background-color: rgb(159, 183, 218);
+
+            width: 70%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            margin: auto;
+            padding-top: 10px;
+            box-shadow: 4px 3px 10px rgb(19, 58, 116), -4px -3px 10px rgb(19, 58, 116), inset 4px 2px 10px rgb(159, 183, 218), inset -4px -2px 10px rgb(159, 183, 218);
+
+        }
+
+        .heading {
+            background-color: rgb(159, 183, 218);
+            width: 70%;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: auto;
+            padding: 20px;
+            font-size: 36px;
+        }
+
+        .card {
+            background-color: rgb(159, 183, 218);
+            justify-content: center;
+            width: 70%;
+            height: fit-content;
+            margin: auto;
+            padding-bottom: 0px;
+            padding: 30px;
+
+        }
+
+        .inputs {
+            background-color: rgb(159, 183, 218);
+            border: 2px solid grey;
+            justify-content: center;
+            width: 93%;
+            display: flex;
+            margin: auto;
+            margin-top: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            height: 30px;
+            font-size: large;
+
+        }
+
+        .labels {
+            background-color: rgb(159, 183, 218);
+
+            position: relative;
+            right: 18px;
+            margin-top: 20px;
+            font-size: large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        .result {
+            background-color: rgb(159, 183, 218);
+            width: auto;
+            height: fit-content;
+            margin: auto;
+            margin-top: auto;
+            padding: 3px;
+            padding-bottom: 0px;
+            font-size: xx-large;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .button {
+            background-color: rgb(19, 58, 116);
+            color: cadetblue;
+            width: fit-content;
+            font-size: large;
+            color: rgb(193, 191, 191);
+            margin: 6px;
+            margin-top: 20px;
+            padding: 3px;
+            border-radius: 6px;
+        }
+
+        #submit {
+            width: fit-content;
+            padding: 4px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submitbutton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(159, 183, 218);
+
+        }
+
+        .form {
+            background-color: rgb(159, 183, 218);
+
+        }
+
+        @media (max-width : 900px) {
+            .container {
+                background-color: rgb(159, 183, 218);
+
+                width: 70%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                margin: auto;
+                padding-top: 10px;
+                box-shadow: 4px 3px 10px rgb(19, 58, 116), -4px -3px 10px rgb(19, 58, 116), inset 4px 2px 10px rgb(159, 183, 218), inset -4px -2px 10px rgb(159, 183, 218);
+            }
+
+        }
+
+        @media (min-width : 900px) {
+            .container {
+                background-color: rgb(159, 183, 218);
+
+                width: 60%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                margin: auto;
+                padding-top: 10px;
+                box-shadow: 4px 3px 10px rgb(19, 58, 116), -4px -3px 10px rgb(19, 58, 116), inset 4px 2px 10px rgb(159, 183, 218), inset -4px -2px 10px rgb(159, 183, 218);
+            }
+
+        }
+
+        @media (min-width : 620px)and(max-width : 900px) {
+            .container {
+                background-color: rgb(159, 183, 218);
+
+                width: 80%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                margin: auto;
+                padding-top: 10px;
+                box-shadow: 4px 3px 10px rgb(19, 58, 116), -4px -3px 10px rgb(19, 58, 116), inset 4px 2px 10px rgb(159, 183, 218), inset -4px -2px 10px rgb(159, 183, 218);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="heading">BMI Calculator</h3>
+        <div class="card">
+            <form action="" class="form">
+
+                <label for="input" class="labels">Height in CM</label>
+                <input type="text" class="height" id="expense-name">
+                <label for="input" class="labels">Weight in KG</label>
+                <input type="text" class="weight" id="amount">
+                <div class="submitbutton"><button id="submit" class="button">SUBMIT</button></div>
+                <div id="resultid" class="result"> </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const height = parseInt(document.querySelector('.height').value);
+        const weight = parseInt(document.querySelector('.weight').value);
+        const result = document.querySelector('.result')
+
+        if (height == ' ' || height < 0 || isNaN(height)) {
+            result.innerHTML = "palese enter a valid height"
+        } else if (weight == ' ' || weight < 0 || isNaN(weight)) {
+            result.innerHTML = "palese enter a valid weight"
+        }
+        else {
+            const BMI = ((weight) / ((height * height) / 10000)).toFixed(2)
+            result.innerHTML = `BMI : ${BMI}`
+        }
+    })
+
+</script>
+
+</html>
