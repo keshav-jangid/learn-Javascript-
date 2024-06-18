@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        .container {
+            width: 600px;
+            height: auto;
+            margin: auto;
+            background-color: rgb(159, 183, 218);
+            display: block;
+            border-radius: 12px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            margin: auto;
+            padding: 12px;
+            box-shadow: 4px 3px 10px rgb(19, 58, 116), -4px -3px 10px rgb(19, 58, 116), inset 4px 2px 10px rgb(159, 183, 218), inset -4px -2px 10px rgb(159, 183, 218);
+
+
+        }
+
+        .message {
+            width: 100%;
+            display: block;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .label {
+            width: 100%;
+            display: block;
+            text-align: center;
+            font-size: 44px;
+        }
+
+        .input {
+            width: 100%;
+            display: block;
+            text-align: center;
+            font-size: 44px;
+
+        }
+
+        .preguess {
+            width: 80%;
+            display: block;
+            margin: auto;
+            text-align: center;
+            font-size: 38px;
+        }
+
+        .attemptsleft {
+            width: 80%;
+            display: block;
+            margin: auto;
+            text-align: center;
+            font-size: 38px;
+            margin-top: 0px;
+        }
+
+        .messagepara {
+            width: 80%;
+            display: block;
+            margin: auto;
+            text-align: center;
+            font-size: 28px;
+            margin-top: 0px;
+        }
+
+        #submit {
+            width: 40%;
+            margin: auto;
+            background-color: rgb(151, 177, 216);
+            border: 0px solid black;
+            border-radius: 9px;
+
+
+
+        }
+
+        #submit:hover {
+            cursor: pointer;
+        }
+
+        .newgame {
+
+            width: 40%;
+            margin: auto;
+            background-color: rgb(151, 177, 216);
+            border: 0px solid black;
+            border-radius: 9px;
+            text-align: center;
+            font-size: 32px;
+
+
+        }
+
+        .newgame:hover {
+            cursor: pointer;
+        }
+
+        #input {
+            width: 60%;
+            margin: auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            background-color: rgb(139, 159, 191);
+            border: 0px;
+            border-radius: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="message">
+            <h2>
+                Try to Guess the number between 1 to 10
+            </h2>
+            <h3>
+                you have 5 attempts to Guess the number
+            </h3>
+        </div>
+        <label class="label" for="input">GUESS THE NUMBER</label>
+        <input class="input" id="input" placeholder="Guess Here" type="text">
+        <input type="submit" class="input" id="submit" value="SUBMIT">
+        <div class="resultparas">
+            <p class="preguess">Previous Guesses :<span class="preguessspan"> </span></p>
+            <p class="attemptsleft">Attempts Left :<span class="attemptsleftspan">5 </span></p>
+            <p class="messagepara"></p>
+        </div>
+    </div>
+    <script>
+        //const random = (Math.random()*10 ).toFixed()
+
+
+        let random = parseInt(Math.random() * 10 + 1)
+        console.log(random)
+
+        const submit = document.querySelector('#submit');
+        const userguess = document.querySelector('#input');
+        let guesses = document.querySelector('.preguess');
+        const attemptleft = document.querySelector('.attemptsleftspan');
+        let loworhi = document.querySelector('.messagepara');
+        let resultparas = document.querySelector('.resultparas');
+
+        let prevguess = [];
+
+        let numguess = 0;
+
+        let playgame = true;
+
+        p = document.createElement('p')
+
+        if (playgame) {
+            submit.addEventListener('click', function (e) {
+                e.preventDefault()
+                const guess = userguess.value;
+                console.log(guess);
+                validateguess(guess);
+            })
+        }
+
+        function validateguess(guess) {
+            if (isNaN(guess)) {
+                alert("enter a valid number!");
+            }
+            if (guess < 1) {
+                alert("enter a valid number!");
+            }
+            if (guess > 10) {
+                alert("enter a valid number!");
+            }
+            else {
+                prevguess.push(guess)
+                if (numguess == 4) {
+
+                    displayguess(guess)
+                    displaymessage(`Game Over , Random Number was ${random} `);
+                    gameover();
+
+                }
+                else {
+                    displayguess(guess)
+                    checkguess(guess)
+                }
+            }
+
+        }
+
+
+        function checkguess(guess) {
+            if (guess == random) {
+                displaymessage("You Guessed It RIght !!")
+                gameover();
+            }
+            else if (guess > random) {
+                displaymessage("Try something smaller")
+            }
+            else if (guess < random) {
+                displaymessage("Try something greater !!");
+            }
+        }
+
+
+        function displayguess(guess) {
+            userguess.value = '';
+            guesses.innerHTML += `${guess}  `;
+            numguess++;
+            attemptleft.innerHTML = `${5 - (numguess)}`
+
+        }
+
+
+        function displaymessage(message) {
+            loworhi.innerHTML = `<h3>${message}</h3>`
+
+        }
+
+
+        function gameover() {
+            userguess.value = ''
+            userguess.setAttribute('disabled', '')
+            submit.setAttribute('disabled', '');
+            p.classList.add('button');
+
+            p.innerHTML = `<h2 class ="newgame">start new Game</h2>`
+            resultparas.appendChild(p);
+            playgame = false
+            newgame()
+        }
+
+
+        function newgame() {
+            const newgamebutton = document.querySelector('.newgame');
+            newgamebutton.addEventListener('click', function () {
+                let random = parseInt(Math.random() * 10 + 1)
+                prevguess = [];
+                numguess = 0;
+                guesses.innerHTML = '';
+                attemptleft.innerHTML = `${5 - (numguess)}`
+                userguess.removeAttribute('disabled', '')
+                submit.removeAttribute('disabled', '');
+
+                resultparas.removeChild(p)
+                playgame = true
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>
